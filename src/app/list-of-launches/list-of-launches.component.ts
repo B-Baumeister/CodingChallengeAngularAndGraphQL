@@ -1,44 +1,24 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  signal,
-} from '@angular/core';
-import { Apollo } from 'apollo-angular';
-import { GET_LAUNCHES } from '../graphql.operations';
-
+import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { GetLaunchesGQL } from '../services/spacexGraphql.service';
 @Component({
   selector: 'app-list-of-launches',
   templateUrl: './list-of-launches.component.html',
   styleUrl: './list-of-launches.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
-
 })
-export class ListOfLaunchesComponent implements OnInit {
+export class ListOfLaunchesComponent {
   readonly panelOpenState = signal(false);
   loading = true;
   error: any;
   launchesUpcoming: any[] = [];
 
-  constructor(private readonly apollo: Apollo) {}
+  futureLaunches$: Observable<any>;
 
-  ngOnInit() {
-    this.apollo
-      .watchQuery<any>({
-        query: GET_LAUNCHES,
-        pollInterval: 500,
-      })
-      .valueChanges.subscribe(
-        (result: any) => {
-          console.log(result.data?.launchesUpcoming);
-          this.launchesUpcoming = result.data?.launchesUpcoming || [];
-          this.loading = result.loading;
-        },
-        (error) => {
-          console.error('Apollo Error:', error);
-          this.error = error;
-          this.loading = false;
-        }
-      );
+  constructor(private readonly getfutureLaunchesService: GetLaunchesGQL) {
+    this.futureLaunches$ = this.getfutureLaunchesService
+      .fetch()
+      .pipe(map((result) => result.data.launchesUpcoming));
   }
 }
