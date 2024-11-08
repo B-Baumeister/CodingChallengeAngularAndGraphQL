@@ -1,0 +1,10 @@
+query GetLaunches {
+  launchesUpcoming {
+    mission_name
+    launch_date_utc
+    launch_date_local
+    rocket {
+      rocket_name
+    }
+  }
+}

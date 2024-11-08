@@ -9,19 +9,9 @@ import { GraphQLModule } from './graphql.module';
 import { ListOfLaunchesComponent } from './list-of-launches/list-of-launches.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ListOfLaunchesComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    GraphQLModule
-  ],
-  providers: [
-    provideAnimationsAsync()
-  ],
-  bootstrap: [AppComponent]
+  declarations: [AppComponent, ListOfLaunchesComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, GraphQLModule],
+  providers: [provideAnimationsAsync()],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
