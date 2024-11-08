@@ -8,9 +8,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { GraphQLModule } from './graphql.module';
 import { ListOfLaunchesComponent } from './list-of-launches/list-of-launches.component';
 
+import { MatExpansionModule } from '@angular/material/expansion';
 @NgModule({
   declarations: [AppComponent, ListOfLaunchesComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, GraphQLModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    GraphQLModule,
+    MatExpansionModule,
+  ],
+  
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
