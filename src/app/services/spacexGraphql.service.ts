@@ -3,25 +3,38 @@ import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T
+> = { [_ in K]?: never };
+export type Incremental<T> =
+  | T
+  | {
+      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
+    };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
-  Date: { input: any; output: any; }
-  ObjectID: { input: any; output: any; }
-  _Any: { input: any; output: any; }
-  federation__FieldSet: { input: any; output: any; }
-  link__Import: { input: any; output: any; }
-  timestamptz: { input: any; output: any; }
-  uuid: { input: any; output: any; }
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
+  Date: { input: any; output: any };
+  ObjectID: { input: any; output: any };
+  _Any: { input: any; output: any };
+  federation__FieldSet: { input: any; output: any };
+  link__Import: { input: any; output: any };
+  timestamptz: { input: any; output: any };
+  uuid: { input: any; output: any };
 };
 
 export type Address = {
@@ -463,17 +476,14 @@ export type Mutation = {
   update_users?: Maybe<Users_Mutation_Response>;
 };
 
-
 export type MutationDelete_UsersArgs = {
   where: Users_Bool_Exp;
 };
-
 
 export type MutationInsert_UsersArgs = {
   objects: Array<Users_Insert_Input>;
   on_conflict?: InputMaybe<Users_On_Conflict>;
 };
-
 
 export type MutationUpdate_UsersArgs = {
   _set?: InputMaybe<Users_Set_Input>;
@@ -589,11 +599,9 @@ export type Query = {
   users_by_pk?: Maybe<Users>;
 };
 
-
 export type QueryCapsuleArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryCapsulesArgs = {
   find?: InputMaybe<CapsulesFind>;
@@ -603,7 +611,6 @@ export type QueryCapsulesArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryCapsulesPastArgs = {
   find?: InputMaybe<CapsulesFind>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -611,7 +618,6 @@ export type QueryCapsulesPastArgs = {
   order?: InputMaybe<Scalars['String']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
 };
-
 
 export type QueryCapsulesUpcomingArgs = {
   find?: InputMaybe<CapsulesFind>;
@@ -621,11 +627,9 @@ export type QueryCapsulesUpcomingArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryCoreArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryCoresArgs = {
   find?: InputMaybe<CoresFind>;
@@ -635,7 +639,6 @@ export type QueryCoresArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryCoresPastArgs = {
   find?: InputMaybe<CoresFind>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -643,7 +646,6 @@ export type QueryCoresPastArgs = {
   order?: InputMaybe<Scalars['String']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
 };
-
 
 export type QueryCoresUpcomingArgs = {
   find?: InputMaybe<CoresFind>;
@@ -653,17 +655,14 @@ export type QueryCoresUpcomingArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryDragonArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryDragonsArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 export type QueryHistoriesArgs = {
   find?: InputMaybe<HistoryFind>;
@@ -673,7 +672,6 @@ export type QueryHistoriesArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryHistoriesResultArgs = {
   find?: InputMaybe<HistoryFind>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -682,37 +680,30 @@ export type QueryHistoriesResultArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryHistoryArgs = {
   id: Scalars['ID']['input'];
 };
 
-
 export type QueryLandpadArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryLandpadsArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 export type QueryLaunchArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryLaunchLatestArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 export type QueryLaunchNextArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
-
 
 export type QueryLaunchesArgs = {
   find?: InputMaybe<LaunchFind>;
@@ -722,7 +713,6 @@ export type QueryLaunchesArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryLaunchesPastArgs = {
   find?: InputMaybe<LaunchFind>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -730,7 +720,6 @@ export type QueryLaunchesPastArgs = {
   order?: InputMaybe<Scalars['String']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
 };
-
 
 export type QueryLaunchesPastResultArgs = {
   find?: InputMaybe<LaunchFind>;
@@ -740,7 +729,6 @@ export type QueryLaunchesPastResultArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryLaunchesUpcomingArgs = {
   find?: InputMaybe<LaunchFind>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -749,22 +737,18 @@ export type QueryLaunchesUpcomingArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryLaunchpadArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryLaunchpadsArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 export type QueryMissionArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryMissionsArgs = {
   find?: InputMaybe<MissionsFind>;
@@ -772,18 +756,15 @@ export type QueryMissionsArgs = {
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 export type QueryMissionsResultArgs = {
   find?: InputMaybe<MissionsFind>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 export type QueryPayloadArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryPayloadsArgs = {
   find?: InputMaybe<PayloadsFind>;
@@ -793,28 +774,23 @@ export type QueryPayloadsArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryRocketArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryRocketsArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 export type QueryRocketsResultArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
 };
 
-
 export type QueryShipArgs = {
   id: Scalars['ID']['input'];
 };
-
 
 export type QueryShipsArgs = {
   find?: InputMaybe<ShipsFind>;
@@ -824,7 +800,6 @@ export type QueryShipsArgs = {
   sort?: InputMaybe<Scalars['String']['input']>;
 };
 
-
 export type QueryShipsResultArgs = {
   find?: InputMaybe<ShipsFind>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -832,7 +807,6 @@ export type QueryShipsResultArgs = {
   order?: InputMaybe<Scalars['String']['input']>;
   sort?: InputMaybe<Scalars['String']['input']>;
 };
-
 
 export type QueryUsersArgs = {
   distinct_on?: InputMaybe<Array<Users_Select_Column>>;
@@ -842,7 +816,6 @@ export type QueryUsersArgs = {
   where?: InputMaybe<Users_Bool_Exp>;
 };
 
-
 export type QueryUsers_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Users_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -850,7 +823,6 @@ export type QueryUsers_AggregateArgs = {
   order_by?: InputMaybe<Array<Users_Order_By>>;
   where?: InputMaybe<Users_Bool_Exp>;
 };
-
 
 export type QueryUsers_By_PkArgs = {
   id: Scalars['uuid']['input'];
@@ -1078,7 +1050,6 @@ export type Subscription = {
   users_by_pk?: Maybe<Users>;
 };
 
-
 export type SubscriptionUsersArgs = {
   distinct_on?: InputMaybe<Array<Users_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -1087,7 +1058,6 @@ export type SubscriptionUsersArgs = {
   where?: InputMaybe<Users_Bool_Exp>;
 };
 
-
 export type SubscriptionUsers_AggregateArgs = {
   distinct_on?: InputMaybe<Array<Users_Select_Column>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -1095,7 +1065,6 @@ export type SubscriptionUsers_AggregateArgs = {
   order_by?: InputMaybe<Array<Users_Order_By>>;
   where?: InputMaybe<Users_Bool_Exp>;
 };
-
 
 export type SubscriptionUsers_By_PkArgs = {
   id: Scalars['uuid']['input'];
@@ -1117,14 +1086,14 @@ export enum Conflict_Action {
   /** ignore the insert on this row */
   Ignore = 'ignore',
   /** update the row with the given values */
-  Update = 'update'
+  Update = 'update',
 }
 
 export enum Link__Purpose {
   /** `EXECUTION` features provide metadata necessary for operation execution. */
   Execution = 'EXECUTION',
   /** `SECURITY` features provide metadata necessary to securely resolve fields. */
-  Security = 'SECURITY'
+  Security = 'SECURITY',
 }
 
 /** column ordering options */
@@ -1140,7 +1109,7 @@ export enum Order_By {
   /** in the descending order, nulls first */
   DescNullsFirst = 'desc_nulls_first',
   /** in the descending order, nulls last */
-  DescNullsLast = 'desc_nulls_last'
+  DescNullsLast = 'desc_nulls_last',
 }
 
 /** expression to compare columns of type timestamptz. All fields are combined with logical 'AND'. */
@@ -1181,7 +1150,6 @@ export type Users_Aggregate_Fields = {
   min?: Maybe<Users_Min_Fields>;
 };
 
-
 /** aggregate fields of "users" */
 export type Users_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Users_Select_Column>>;
@@ -1220,7 +1188,7 @@ export enum Users_Constraint {
   Or = 'or',
   Primary = 'primary',
   Unique = 'unique',
-  UsersPkey = 'users_pkey'
+  UsersPkey = 'users_pkey',
 }
 
 /** input type for inserting data into table "users" */
@@ -1303,7 +1271,7 @@ export enum Users_Select_Column {
   Name = 'name',
   Rocket = 'rocket',
   Timestamp = 'timestamp',
-  Twitter = 'twitter'
+  Twitter = 'twitter',
 }
 
 /** input type for updating data in table "users" */
@@ -1322,7 +1290,7 @@ export enum Users_Update_Column {
   Name = 'name',
   Rocket = 'rocket',
   Timestamp = 'timestamp',
-  Twitter = 'twitter'
+  Twitter = 'twitter',
 }
 
 /** expression to compare columns of type uuid. All fields are combined with logical 'AND'. */
@@ -1338,31 +1306,46 @@ export type Uuid_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['uuid']['input']>>;
 };
 
-export type GetLaunchesQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetLaunchesQueryVariables = Exact<{ [key: string]: never }>;
 
-
-export type GetLaunchesQuery = { __typename?: 'Query', launchesUpcoming?: Array<{ __typename?: 'Launch', mission_name?: string | null, launch_date_utc?: any | null, launch_date_local?: any | null, rocket?: { __typename?: 'LaunchRocket', rocket_name?: string | null } | null } | null> | null };
+export type GetLaunchesQuery = {
+  __typename?: 'Query';
+  launchesUpcoming?: Array<{
+    __typename?: 'Launch';
+    mission_name?: string | null;
+    launch_date_utc?: any | null;
+    launch_date_local?: any | null;
+    rocket?: {
+      __typename?: 'LaunchRocket';
+      rocket_name?: string | null;
+    } | null;
+  } | null> | null;
+};
 
 export const GetLaunchesDocument = gql`
-    query GetLaunches {
-  launchesUpcoming {
-    mission_name
-    launch_date_utc
-    launch_date_local
-    rocket {
-      rocket_name
+  query GetLaunches {
+    launchesUpcoming {
+      mission_name
+      launch_date_utc
+      launch_date_local
+      mission_id
+      rocket {
+        rocket_name
+      }
     }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class GetLaunchesGQL extends Apollo.Query<
+  GetLaunchesQuery,
+  GetLaunchesQueryVariables
+> {
+  document = GetLaunchesDocument;
+
+  constructor(apollo: Apollo.Apollo) {
+    super(apollo);
   }
 }
-    `;
-
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class GetLaunchesGQL extends Apollo.Query<GetLaunchesQuery, GetLaunchesQueryVariables> {
-    document = GetLaunchesDocument;
-    
-    constructor(apollo: Apollo.Apollo) {
-      super(apollo);
-    }
-  }

@@ -16,9 +16,20 @@ export class ListOfLaunchesComponent {
 
   futureLaunches$: Observable<any>;
 
+  countOfOpenLaunches: { [missioId: string]: number } = {};
+
   constructor(private readonly getfutureLaunchesService: GetLaunchesGQL) {
     this.futureLaunches$ = this.getfutureLaunchesService
       .fetch()
       .pipe(map((result) => result.data.launchesUpcoming));
+  }
+
+  trackOpenLaunches(launch: any) {
+    const missionId = launch.mission_id;
+    this.countOfOpenLaunches[missionId] =
+      (this.countOfOpenLaunches[missionId] || 0) + 1;
+    console.log(
+      `Key(respective mission ID): ${missionId} | Value(Number of times this mission has already been opened): ${this.countOfOpenLaunches[missionId]}`
+    );
   }
 }
